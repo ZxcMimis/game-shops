@@ -48,9 +48,46 @@ const gameElements = game.map(game => `
         <h2 class="game-title">${game.title}</h2>
         <p class="game-price">${game.price}</p>
         <img class="game-photo" src="${game.photo}" alt="${game.title}">
+            <button class="game-bth">Купити гру</button>
     </li>`).join("");
 
 
 console.log(gameElements);
 
 list.innerHTML = gameElements;
+
+const buttons = document.querySelectorAll(".game-bth");
+console.log(buttons);
+
+// buttons.forEach((buttons) => {
+//     buttons.addEventListener("click", openModal => {
+
+//     })
+// });
+
+
+// оптимизуэмо додаток щоб було меньше слухачів.
+// зараз є шісьть слухачів бо на кождній кнопці лежить слухачь.
+// Засьувуэмо делегування подій та повісимо одного слухача на їх спільного предка
+
+const list = document.querySelector(".game-list")
+
+list.addEventListener("click", (event) => {
+    if (event.target.nodeName === "BUTTON") {
+    openModal()
+}
+}) 
+
+function openModal() {
+    const modalClose = document.querySelector(".backdrop")
+    modalClose.classList.remove("is-hidden");
+}
+
+const close = document.querySelector(".close-modal");
+closeBth.addEventListener("click", closeModal => {
+    const modalClose = document.querySelector(".backdrop")
+    modalClose.classList.add("is-hidden");
+});
+
+
+
